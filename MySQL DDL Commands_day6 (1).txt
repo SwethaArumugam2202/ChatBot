@@ -1,0 +1,253 @@
+MySQL DDL Commands 
+
+ DDL?
+
+ DDL (Data Definition Language)  is used to  create, change, and delete  the structure of databases and tables.
+
+> DDL commands work on the  structure  of a database, not the data.
+
+  DDL Commands
+
+* CREATE
+* ALTER
+* DROP
+* TRUNCATE
+* RENAME   
+
+
+ CREATE  → Create a new database or table.
+
+ ALTER  → Change an existing table.
+
+ DROP  → Delete the table completely.
+
+ TRUNCATE  → Delete all rows, keep the table.
+
+ RENAME  → Change the table name.
+
+---
+
+# 1. CREATE
+
+The  CREATE  command is used to create a  database  or a  table .
+
+# Create a Database
+
+sql:
+CREATE DATABASE college;
+ 
+
+Use the database:
+
+sql:
+USE college;
+ 
+
+---
+
+# Create a Table
+
+sql:
+CREATE TABLE students_details (
+    student_id INT,
+    student_name VARCHAR(100),
+    dob DATE
+);
+ 
+
+Now the table  students_details  is created.
+
+---
+
+# Check the Table Structure
+
+DESCRIBE students_details;
+
+sql:
+DESC students_details;
+ 
+
+Output:
+
+| Field        | Type         |
+| ------------ | ------------ |
+| student_id   | INT          |
+| student_name | VARCHAR(100) |
+| dob          | DATE         |
+
+---
+
+# 2. ALTER
+
+The  ALTER  command is used to  change an existing table .
+
+You can:
+
+* Add a column
+* Remove a column
+* Change a datatype
+* Rename a column
+
+---
+
+# Add a Column
+
+sql:
+ALTER TABLE students_details
+ADD department VARCHAR(50);
+ V                   
+
+Before
+
+| student_id | student_name | dob |
+
+After
+
+| student_id | student_name | dob | department |
+
+---
+
+# Change a Datatype
+
+sql:
+ALTER TABLE students_details
+MODIFY department VARCHAR(100);
+ 
+
+The department column can now store more characters.
+
+---
+
+# Rename a Column
+
+sql:
+ALTER TABLE students_details
+RENAME COLUMN department TO branch;
+ 
+
+Before
+
+ 
+department
+ 
+
+After
+
+ 
+branch
+ 
+
+---
+
+# Remove a Column
+
+sql:
+ALTER TABLE students_details
+DROP COLUMN branch;
+ 
+
+The  branch  column is deleted.
+
+---
+
+# 3. DROP
+
+The  DROP  command deletes the entire table.
+
+sql:
+DROP TABLE students_details;
+ 
+
+After running this command:
+
+* Table is deleted 
+* Data is deleted 
+
+---
+
+# 4. TRUNCATE
+
+The  TRUNCATE  command deletes  all rows  from a table.
+
+sql:
+TRUNCATE TABLE students_details;
+ 
+
+Before
+
+| student_id | student_name |
+| ---------- | ------------ |
+| 1          | Ravi         |
+| 2          | Priya        |
+
+After
+
+| student_id | student_name |
+| ---------- | ------------ |
+
+The table is still there, but all data is removed.
+
+---
+
+# 5. RENAME
+
+The  RENAME  command changes the table name.
+
+sql:
+RENAME TABLE students_details TO student_personal_details;
+ 
+
+Now the table name is  student_personal_details.
+
+---
+
+# Difference Between DROP and TRUNCATE
+
+| DROP              | TRUNCATE         |
+| ----------------- | ---------------- |
+| Deletes the table | Deletes all rows |
+| Table is removed  | Table remains    |
+
+---
+
+ Example
+
+ Create a database :CREATE DATABASE college;
+ Use the database :USE college;
+ Create a table
+
+sql:
+CREATE TABLE students (
+    student_id INT,
+    student_name VARCHAR(100),
+    dob DATE
+);
+ 
+Add a new column
+
+sql:
+ALTER TABLE students
+ADD department VARCHAR(50);
+ 
+Remove all rows
+
+sql:
+TRUNCATE TABLE students;
+ 
+Delete the table
+
+sql:
+DROP TABLE students;
+ 
+
+# Remember
+
+ CREATE  → Create a new database or table.
+
+ ALTER  → Change an existing table.
+
+ DROP  → Delete the table completely.
+
+ TRUNCATE  → Delete all rows, keep the table.
+
+ RENAME  → Change the table name.
